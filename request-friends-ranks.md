@@ -7,7 +7,7 @@ _This runs completely local on your machine with a direct request to VRChat's AP
   * Chrome, Windows: `CTRL` + `SHIFT` + `J`
   * Firefox, Windows: `CTRL` + `SHIFT` + `K`
   * Chrome, macOS: `OPTION` + `COMMAND` + `J`
-3. Paste the following code and replace `others_username` (lower case only), `your_username` and `your_password`
+3. Paste the following code and replace `your_username` and `your_password`
 4. Press enter
 
 ```javascript
