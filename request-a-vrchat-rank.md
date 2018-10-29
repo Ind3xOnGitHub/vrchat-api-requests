@@ -1,3 +1,5 @@
+# Request a user's VRChat rank
+
 _This runs completely local on your machine with a direct request to VRChat's API. There is no server from me or whosover in-between. It's basically the same the vrchat.com site and your game client does._
 
 1. Go to https://api.vrchat.cloud
