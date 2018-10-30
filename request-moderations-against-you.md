@@ -19,34 +19,33 @@ data.append('username_email', yourUsername);
 data.append('password', yourPassword);
 
 fetch('https://api.vrchat.cloud/login', {
-    method: 'POST',
-    body: data,
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    credentials: 'include'
+  method: 'POST',
+  body: data,
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  credentials: 'include'
 })
-    .then(response => {
-      const rawCookies = document.cookie.split(';');
-      const cookies = {};
-      rawCookies.forEach(cookie => {
-        cookie.split('=');
-        cookies[cookie[0]] = cookie[1];
-      });
-      
-      fetch(`https://api.vrchat.cloud/api/1/auth/user/playermoderated`, {
-        method: 'GET',
-        credentials: 'include'
-      })
-        .then(response => response.json())
-        .then(json => {
-          const moderations = {};
-
-          json.forEach(moderation => {
-            if (!moderations[moderation.type]) moderations[moderation.type] = [];
-            moderations[moderation.type].push(moderation.sourceDisplayName);
-          });
-
-          console.log(moderations);
-          console.log(json.filter(moderation => moderation.type !== 'unmute'));
-        });
+  .then(response => {
+    const rawCookies = document.cookie.split(';');
+    const cookies = {};
+    rawCookies.forEach(cookie => {
+      cookie.split('=');
+      cookies[cookie[0]] = cookie[1];
     });
+    
+    return fetch(`https://api.vrchat.cloud/api/1/auth/user/playermoderated`, {
+      method: 'GET',
+      credentials: 'include'
+    })
+  .then(response => response.json())
+  .then(json => {
+    const moderations = {};
+
+    json.forEach(moderation => {
+      if (!moderations[moderation.type]) moderations[moderation.type] = [];
+      moderations[moderation.type].push(moderation.sourceDisplayName);
+    });
+
+    console.log(moderations);
+    console.log(json.filter(moderation => moderation.type !== 'unmute'));
+  });
 ```
