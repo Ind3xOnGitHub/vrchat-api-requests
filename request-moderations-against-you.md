@@ -32,8 +32,7 @@ fetch('https://api.vrchat.cloud/login', {
       cookies[cookie[0]] = cookie[1];
     });
     
-    return fetch(`https://api.vrchat.cloud/api/1/auth/user/playermoderated`, {
-      method: 'GET',
+    return fetch('https://api.vrchat.cloud/api/1/auth/user/playermoderated', {
       credentials: 'include'
     })
   .then(response => response.json())
