@@ -35,6 +35,7 @@ fetch('https://api.vrchat.cloud/login', {
     return fetch('https://api.vrchat.cloud/api/1/auth/user/playermoderated', {
       credentials: 'include'
     })
+  })
   .then(response => response.json())
   .then(json => {
     const moderations = {};
