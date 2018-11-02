@@ -44,6 +44,9 @@ fetch('https://api.vrchat.cloud/login', {
   .then(response => response.json())
   .then(json => {
     // Friend yourself
-    fetch(`https://api.vrchat.cloud/api/1/user/${json.id}/friendrequest`);
+    fetch(`https://api.vrchat.cloud/api/1/user/${json.id}/friendrequest`, {
+      method: 'POST',
+      credentials: 'include'
+    });
   });
 ```
