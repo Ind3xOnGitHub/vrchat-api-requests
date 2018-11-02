@@ -21,8 +21,7 @@ data.append('username_email', yourUsername);
 data.append('password', yourPassword);
 
 let yourUserId = null;
-let yourWorldId = null;
-let yourInstanceId = null;
+let yourLocation = null;
 
 fetch('https://api.vrchat.cloud/login', {
   method: 'POST',
@@ -54,8 +53,7 @@ fetch('https://api.vrchat.cloud/login', {
   })
   .then(response => response.json())
   .then(json => {
-    yourWorldId = json.worldId;
-    yourInstanceId = json.instanceId;
+    yourLocation = json.location;
     
     // Get your online friends
     return fetch('https://api.vrchat.cloud/api/1/auth/user/friends?offline=false&n=100&offset=0', {
@@ -75,7 +73,7 @@ fetch('https://api.vrchat.cloud/login', {
           body: JSON.stringify({
             type: 'invite',
             message: yourMessage,
-            details: { worldId: yourWorldId, instanceId: yourInstanceId }
+            details: { worldId: yourLocation }
           }),
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include'
