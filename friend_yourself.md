@@ -11,6 +11,8 @@ _This runs completely local on your machine with a direct request to VRChat's AP
 4. Press enter
 5. Accept the friend request ingame
 
+_You can join my Discord if you have any questions: [discord.gg/TTRgRpJ](https://discord.gg/TTRgRpJ)_
+
 ```javascript
 const yourUsername = 'your_username';
 const yourPassword = 'your_password';
