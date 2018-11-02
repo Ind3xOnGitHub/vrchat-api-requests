@@ -10,6 +10,8 @@ _This runs completely local on your machine with a direct request to VRChat's AP
 3. Paste the following code and replace `your_username` and `your_password`
 4. Press enter
 
+_You can join my Discord if you have any questions: [discord.gg/TTRgRpJ](https://discord.gg/TTRgRpJ)_
+
 ```javascript
 const yourUsername = 'your_username';
 const yourPassword = 'your_password';
