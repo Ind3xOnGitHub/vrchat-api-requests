@@ -1,0 +1,90 @@
+# Invite all your online friends with a custom message
+
+_This runs completely local on your machine with a direct request to VRChat's API. There is no server from me or whosover in-between. It's basically the same the vrchat.com site and your game client does._
+
+1. Go to https://api.vrchat.cloud
+2. Open the **Developer Tools > Console** of your browser:
+  * Chrome, Windows: `CTRL` + `SHIFT` + `J`
+  * Firefox, Windows: `CTRL` + `SHIFT` + `K`
+  * Chrome, macOS: `OPTION` + `COMMAND` + `J`
+3. Paste the following code and replace `your_username`, `your_password` and `your_message`
+4. Press enter
+5. It will prompt you for each online friend if you want to invite that one
+
+```javascript
+const yourUsername = 'your_username';
+const yourPassword = 'your_password';
+const yourMessage = 'your_message';
+
+const data = new URLSearchParams();
+data.append('username_email', yourUsername);
+data.append('password', yourPassword);
+
+let yourUserId = null;
+let yourWorldId = null;
+let yourInstanceId = null;
+
+fetch('https://api.vrchat.cloud/login', {
+  method: 'POST',
+  body: data,
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  credentials: 'include'
+})
+  .then(response => {
+    const rawCookies = document.cookie.split(';');
+    const cookies = {};
+    rawCookies.forEach(cookie => {
+      cookie.split('=');
+      cookies[cookie[0]] = cookie[1];
+    });
+
+    // Get your user id
+    return fetch('https://api.vrchat.cloud/api/1/auth/user', {
+      credentials: 'include'
+    });
+  })
+  .then(response => response.json())
+  .then(json => {
+    yourUserId = json.id
+    
+    // Get your world and instance id
+    return fetch(`https://api.vrchat.cloud/api/1/users/${yourUserId}`, {
+      credentials: 'include'
+    });
+  })
+  .then(response => response.json())
+  .then(json => {
+    yourWorldId = json.worldId;
+    yourInstanceId = json.instanceId;
+    
+    // Get your online friends
+    return fetch('https://api.vrchat.cloud/api/1/auth/user/friends?offline=false&n=100&offset=0', {
+      credentials: 'include'
+    });
+  })
+  .then(response => response.json())
+  .then(json => {
+    const friendsToInvite = json.filter(friend => {
+      return window.confirm(`Invite ${friend.displayName}?`);
+    });
+
+    friendsToInvite.forEach(friend => {
+      setTimeout(() => {
+        fetch(`https://api.vrchat.cloud/api/1/user/${friend.id}/notification`, {
+          method: 'POST',
+          body: JSON.stringify({
+            type: 'invite',
+            message: yourMessage,
+            details: { worldId: yourWorldId, instanceId: yourInstanceId }
+          }),
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include'
+        })
+          .then(response => response.json())
+          .then(json => {
+            console.log(`Invited ${friend.displayName}`);
+          });
+      }, 1000);
+    });
+  });
+```
