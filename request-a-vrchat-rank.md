@@ -11,6 +11,8 @@ _This runs completely local on your machine with a direct request to VRChat's AP
 4. Press enter
 5. Under `tags` you will find some of these: `trust_system_`. The highest one subtracted by one will be your ingame rank. Example: If you have the tag `trust_system_veteran` your ingame rank will be _Trusted User_ (not Veteran User)
 
+_You can join my Discord if you have any questions: [discord.gg/TTRgRpJ](https://discord.gg/TTRgRpJ)_
+
 ```javascript
 const yourUsername = 'your_username';
 const yourPassword = 'your_password';
