@@ -12,6 +12,8 @@ _This runs completely local on your machine with a direct request to VRChat's AP
 5. Press enter
 6. It will prompt you for each online friend if you want to invite that one
 
+_You can join my Discord if you have any questions: [discord.gg/TTRgRpJ](https://discord.gg/TTRgRpJ)_
+
 ```javascript
 const yourUsername = 'your_username';
 const yourPassword = 'your_password';
