@@ -2,14 +2,15 @@
 
 _This runs completely local on your machine with a direct request to VRChat's API. There is no server from me or whosover in-between. It's basically the same the vrchat.com site and your game client does._
 
-1. Go to https://api.vrchat.cloud
-2. Open the **Developer Tools > Console** of your browser:
+1. Friend yourself by using this script: [friend_yourself.md](./friend_yourself.md)
+2. Go to https://api.vrchat.cloud
+3. Open the **Developer Tools > Console** of your browser:
   * Chrome, Windows: `CTRL` + `SHIFT` + `J`
   * Firefox, Windows: `CTRL` + `SHIFT` + `K`
   * Chrome, macOS: `OPTION` + `COMMAND` + `J`
-3. Paste the following code and replace `your_username`, `your_password` and `your_message`
-4. Press enter
-5. It will prompt you for each online friend if you want to invite that one
+4. Paste the following code and replace `your_username`, `your_password` and `your_message`
+5. Press enter
+6. It will prompt you for each online friend if you want to invite that one
 
 ```javascript
 const yourUsername = 'your_username';
