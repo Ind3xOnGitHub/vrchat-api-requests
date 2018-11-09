@@ -89,3 +89,11 @@ fetch('https://api.vrchat.cloud/login', {
     });
   });
 ```
+
+__Official VRChat dev statement about this script:__
+> Hello,
+> 
+> From what you've described, it doesn't sound like there will be any issues with that script in its current state. The server might rate limit you if it catches you running the script too many times in a row, but you'll be fine if it isn't abused. Thanks for reaching out! 
+> 
+> Aev
+> VRChat Support
